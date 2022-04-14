@@ -1,11 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
-
+import { useNavigate } from "react-router-dom";
 
 
 export const Register = () => {
     const [form, setForm] = useState({});
-
+    const navigate = useNavigate();
     const handleChange = (e) => {
 
         let { name, value } = e.target
@@ -36,6 +36,9 @@ export const Register = () => {
         }).then((res) => res.json()).then((res) => {
             console.log(res)
             alert(res.message)
+            navigate("/login")
+        }).catch(err => {
+            console.log(err)
         })
 
 
